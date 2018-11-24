@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="4cba446c-5cfe-46f0-b959-40fb8cd8c69f" name="www.mkwk019.cba.pl" url="http://clickbait.cba.pl/">
+        <fileTransfer host="clickbait.cba.pl" port="21">
+          <advancedOptions>
+            <advancedOptions passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
