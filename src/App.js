@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import Home from '/src/containers/Home'
+import Home from '../src/containers/Home'
 import clickbait2 from "./img/clickbait2.png";
 import Img from "react-image";
 
