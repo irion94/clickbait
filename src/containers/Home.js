@@ -4,6 +4,7 @@ import MemeList from "../components/MemeList";
 import MyPagination from "../components/MyPagination";
 import ClickBaitItem from "./ClickBaitItem";
 
+
 import {
     BrowserRouter as
         Router,
@@ -12,6 +13,7 @@ import {
     Link
 } from "react-router-dom";
 import Top from "./Top";
+import Upload from "./Upload";
 
 class Home extends Component {
     constructor(props, context) {
@@ -50,7 +52,8 @@ class Home extends Component {
                 </Navbar>
                 <Route path="/" exact component={MemeList} />
                 <Route path="/top" component={Top} />
-                <Route path="/ClickBait" component={ClickBaitItem} />
+                <Route path="/upload" component={Upload} />
+                <Route path="/ClickBait/:id" render={(props) => <ClickBaitItem {...props}/>} isAuthed={true} />
             </div>
             </Router>
         );
