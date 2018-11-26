@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
 import {Nav, Navbar, NavItem} from 'react-bootstrap'
 import MemeList from "../components/MemeList";
-import MyPagination from "../components/MyPagination";
 import ClickBaitItem from "./ClickBaitItem";
 
 
 import {
     BrowserRouter as
-        Router,
-    Route,
-    NavLink,
-    Link
+        Router, Link, Route
 } from "react-router-dom";
 import Top from "./Top";
 import Upload from "./Upload";

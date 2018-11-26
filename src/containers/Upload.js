@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {storage, database} from '/Users/irion94/clickbait/src/firebase/index';
+import {storage} from '../firebase/index';
 import firebase from 'firebase/app'
 
 class Upload extends Component {

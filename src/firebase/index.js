@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import 'firebase/storage'
 import 'firebase/database'
-// Initialize Firebase
+
 const config = {
     apiKey: "AIzaSyBJcpUlTEVxovC_KpWnhZHCY2B3lFWGs4w",
     authDomain: "clickbaitdb-6b119.firebaseapp.com",
@@ -13,8 +13,7 @@ const config = {
 firebase.initializeApp(config);
 
 const storage = firebase.storage();
-const database = firebase.database;
 
 export {
-    storage,database, firebase as default
+    storage, firebase as default
 }
