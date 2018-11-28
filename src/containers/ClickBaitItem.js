@@ -1,26 +1,31 @@
 import React, {Component} from 'react'
 import ListItem from "../components/ListItem";
-import axios from "axios";
+import firebase from "firebase/app";
+import {Panel} from 'react-bootstrap'
 
 class ClickBaitItem extends Component{
     state = {
-      item: {title:'',patch:''}
+      item: {}
     };
     componentDidMount(){
-        axios.get(`http://localhost:3000/image?id=${this.props.match.params.id}`).then((result) => {
-            console.log('result:',result)
-            this.setState({item:result.data})
-        });
-    }
+        firebase.database().ref(`/${this.props.match.params.id}`).once('value')
+            .then((result) => {
+                this.setState({item:result.val()})
+            });
+        };
+
 
     render() {
-        let item = this.state.item;
-        console.log("clickbaititem", this.state)
         return (
             <div>
                 <ListItem item={this.state.item}/>
+                <Panel>
+                    <Panel.Heading>
+                        <Panel.Title componentClass="h3">{this.state.item.description}</Panel.Title>
+                    </Panel.Heading>
+                </Panel>
             </div>
-        )
+        );
     }
 };
 
