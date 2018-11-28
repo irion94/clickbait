@@ -114,12 +114,12 @@ class Upload extends Component {
                             onChange={(event) => this.setState({title: event.target.value})}
                         />
                         <br/>
-                        <FormControl
-                            type="text"
-                            value={this.state.description}
-                            placeholder="Opis"
-                            onChange={(event) => this.setState({description: event.target.description})}
-                        />
+                        {/*<FormControl*/}
+                            {/*type="text"*/}
+                            {/*value={this.state.description}*/}
+                            {/*placeholder="Opis"*/}
+                            {/*onChange={(event) => this.setState({description: event.target.description})}*/}
+                        {/*/>*/}
                         <br/>
                         <input type="file" onChange={this.handleChange}/>
                         <br/>

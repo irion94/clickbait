@@ -27,12 +27,12 @@ const sectionModel = (id, title, description, picture_path, timestamp) => ({
     like:0,
     dislike:0,
     timestamp: timestamp
-})
+});
 
 
 
 export const addSection = (title, description, picture_path) => {
     let key = database.ref('/').push().key;
-    let model = sectionModel(key, title,description,picture_path, firebase.database.ServerValue.TIMESTAMP);
+    let model = sectionModel(key, title, description, picture_path, firebase.database.ServerValue.TIMESTAMP);
     return database.ref('/'+ key).set(model)
 }
