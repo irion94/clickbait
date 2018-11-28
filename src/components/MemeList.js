@@ -9,7 +9,7 @@ class MemeList extends React.Component {
     state = {
         array: [],
         clickbait_count: null
-    }
+    };
 
     componentDidMount() {
         let list = [];
@@ -20,7 +20,7 @@ class MemeList extends React.Component {
                     list.push(item)
                 ), result.val());
 
-                this.setState({array: list})
+                this.setState({array: list.reverse()})
             });
     }
 
@@ -31,9 +31,9 @@ class MemeList extends React.Component {
                 {
                     map((item) => (
                         <ListItem item={item}/>
-                    ), this.state.array.reverse())
+                    ), this.state.array)
                 }
-                <MyPagination/>
+                <MyPagination count={this.state.clickbait_count}/>
             </ListGroup>
         )
     }

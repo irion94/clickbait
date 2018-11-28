@@ -18,7 +18,7 @@ const ListItem = (props) => {
                         </Link>
                 </Panel.Body>
                 <Panel.Footer>
-                    footer
+                    /TODO/
                 </Panel.Footer>
             </Panel>
         </ListGroupItem>
