@@ -4,6 +4,7 @@ import ListItem from "./ListItem";
 import {ListGroup} from 'react-bootstrap'
 import MyPagination from "./MyPagination";
 import firebase from 'firebase/app'
+import {db} from "../firebase";
 
 class MemeList extends React.Component {
     state = {
@@ -25,6 +26,7 @@ class MemeList extends React.Component {
     }
 
     render() {
+
         console.log('state', this.state.array)
         return (
             <ListGroup>

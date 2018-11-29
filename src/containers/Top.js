@@ -5,7 +5,7 @@ class Top extends Component {
         return(
             <div>
                 <p>
-                    lorem ipsu i chujnia dolores
+                    In progress.....
                 </p>
             </div>
         )

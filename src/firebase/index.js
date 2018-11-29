@@ -2,6 +2,8 @@ import firebase from "firebase";
 import 'firebase/storage'
 import 'firebase/database'
 
+import '@firebase/firestore'
+
 const config = {
     apiKey: "AIzaSyBJcpUlTEVxovC_KpWnhZHCY2B3lFWGs4w",
     authDomain: "clickbaitdb-6b119.firebaseapp.com",
@@ -36,3 +38,14 @@ export const addSection = (title, description, picture_path) => {
     let model = sectionModel(key, title, description, picture_path, firebase.database.ServerValue.TIMESTAMP);
     return database.ref('/'+ key).set(model)
 }
+
+
+//cloud platform
+
+// const admin = require('firebase-admin');
+//
+// admin.initializeApp({
+//     credential: admin.credential.applicationDefault()
+// });
+//
+// export var db = admin.firestore();

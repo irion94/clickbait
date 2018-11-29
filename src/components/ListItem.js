@@ -2,7 +2,7 @@ import React from 'react'
 import {Panel, ListGroupItem} from 'react-bootstrap'
 import Img from "react-image";
 import {Link} from 'react-router-dom'
-import {FacebookProvider, ShareButton} from 'react-facebook'
+import {FacebookProvider, Like} from 'react-facebook'
 
 const ListItem = (props) => {
     const onClick = (e) => {
@@ -18,7 +18,9 @@ const ListItem = (props) => {
                         </Link>
                 </Panel.Body>
                 <Panel.Footer>
-                    /TODO/
+                    <FacebookProvider appId="202520040658664">
+                        <Like href={`http://localhost:3001/clickbait/${props.item.id}`} size="large" colorScheme="dark" share layout="button_count" />
+                    </FacebookProvider>
                 </Panel.Footer>
             </Panel>
         </ListGroupItem>
