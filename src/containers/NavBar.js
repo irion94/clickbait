@@ -11,10 +11,10 @@ class NavBar extends Component {
                             <a href={"/"}>Główna</a>
                         </Navbar.Brand>
                         <Navbar.Brand>
-                            <a href={"/"}>Top!</a>
+                            <a href={"/top"}>Top!</a>
                         </Navbar.Brand>
                         <Navbar.Brand>
-                            <a href={"/"}>Uploaduj ClickBaita!</a>
+                            <a href={"/upload"}>Uploaduj ClickBaita!</a>
                         </Navbar.Brand>
                     </Navbar.Header>
                 </Navbar>
