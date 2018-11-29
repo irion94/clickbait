@@ -143,7 +143,7 @@ class Upload extends Component {
                     <Button onClick={this.handleUpload}>Dodaj!</Button>
                 </form>
                 {
-                    this.state.redirect ? <Redirect to={"/main/1"}/> : null
+                    this.state.redirect ? <Redirect to={"/"}/> : null
                 }
             </div>
         )

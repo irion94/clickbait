@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {Nav, Navbar, NavItem} from 'react-bootstrap'
+import {Nav, NavItem, Navbar} from 'react-bootstrap'
 
-class Home extends Component {
+class NavBar extends Component {
     render() {
         return (
             <div style={{alignItems:'left'}}>
                 <Navbar>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href={"/main/1"}>Główna</a>
+                            <a href={"/"}>Główna</a>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
@@ -26,4 +26,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default NavBar

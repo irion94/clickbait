@@ -7,18 +7,21 @@ import firebase from 'firebase/app'
 import {db} from "../firebase";
 
 class MemeList extends React.Component {
-    state = {
-        array: [],
-        clickbait_count: null,
-        page_number: 0
-    };
+    constructor(props){
+        super(props)
+        this.state = {
+            array: [],
+            clickbait_count: null,
+            page_number: 1
+        };
+    }
 
     pageHandler(event) {
         this.setState({page_number: event})
     }
 
     componentDidMount() {
-        this.setState({page_number: parseInt(this.props.match.params.page) - 1})
+        this.setState({page_number: parseInt(this.props.page) - 1})
         let list = [];
         firebase.database().ref('/').once('value').then((result) => {
             this.setState({clickbait_count: result.numChildren()}, () => {
@@ -37,17 +40,18 @@ class MemeList extends React.Component {
     }
 
     render() {
-        return (
-            <ListGroup>
-                {
-                    map((item) => (
-                        <ListItem item={item}/>
-                    ), this.state.array)
-                }
-                <MyPagination number={parseInt(this.props.match.params.page)} onClick={this.pageHandler}
-                              count={this.state.clickbait_count}/>
-            </ListGroup>
-        )
+            return (
+                <ListGroup>
+                    {
+                        map((item) => (
+                            <ListItem item={item}/>
+                        ), this.state.array)
+                    }
+
+                    <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
+                                  count={this.state.clickbait_count}/>
+                </ListGroup>
+            )
     }
 }
 
