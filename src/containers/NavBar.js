@@ -10,15 +10,13 @@ class NavBar extends Component {
                         <Navbar.Brand>
                             <a href={"/"}>Główna</a>
                         </Navbar.Brand>
+                        <Navbar.Brand>
+                            <a href={"/"}>Top!</a>
+                        </Navbar.Brand>
+                        <Navbar.Brand>
+                            <a href={"/"}>Uploaduj ClickBaita!</a>
+                        </Navbar.Brand>
                     </Navbar.Header>
-                    <Nav>
-                        <NavItem href={'/top'}>
-                            Topka!
-                        </NavItem>
-                        <NavItem href={'/upload'}>
-                            Uploaduj ClickBaita!
-                        </NavItem>
-                    </Nav>
                 </Navbar>
             </div>
 
