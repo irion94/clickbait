@@ -1,20 +1,22 @@
 import React, {Component} from 'react'
 import {addSection, storage} from '../firebase/index';
-import { loadReCaptcha, ReCaptcha } from 'react-recaptcha-google'
+import {loadReCaptcha, ReCaptcha} from 'react-recaptcha-google'
 import {ProgressBar, FormGroup, FormControl, ControlLabel, HelpBlock, Button} from 'react-bootstrap'
+import {Redirect} from 'react-router-dom'
 
 class Upload extends Component {
     constructor(props) {
         super(props);
         this.state = {
             id: null,
-            title:'',
-            description:'',
+            title: '',
+            description: '',
             image: null,
             url: '',
             progress: 0,
             botCheck: false,
-            validationMessage:{botMessage:'', titleMessage:'', imageMessage:''}
+            redirect: false,
+            validationMessage: {botMessage: '', titleMessage: '', imageMessage: ''}
         }
 
         this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
@@ -35,7 +37,7 @@ class Upload extends Component {
 
     handleUpload = () => {
         const {title, botCheck, image} = this.state;
-        if(title !== '' && botCheck !== false && image !== null){
+        if (title !== '' && botCheck !== false && image !== null) {
             const {image} = this.state;
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             uploadTask.on('state_changed',
@@ -44,29 +46,29 @@ class Upload extends Component {
                     this.setState({progress});
                 },
                 (error) => {
-                    // error function ....
+                    // error function
                     console.log(error);
                 },
                 () => {
-                    // complete function ....
+                    // complete function
                     storage.ref('images').child(image.name).getDownloadURL().then(url => {
                         this.setState({url});
                     }).then(() => {
-                            const {title,description, url} = this.state;
-                            addSection(title,description,url)
+                            const {title, description, url} = this.state;
+                            addSection(title, description, url)
                         }
-                    )
+                    ).then(() => this.setState({redirect: true}))
                 });
         }
-        else{
-            if(title === ''){
-                this.setState({validationMessage:{titleMessage:'Wpisz tytuł!?'}})
+        else {
+            if (title === '') {
+                this.setState({validationMessage: {titleMessage: 'Wpisz tytuł!?'}})
             }
-            else if(image === null){
-                this.setState({validationMessage:{imageMessage:'Nie wybrałeś zdjęcia!'}})
+            else if (image === null) {
+                this.setState({validationMessage: {imageMessage: 'Nie wybrałeś zdjęcia!'}})
             }
-            else if(botCheck === false){
-                this.setState({validationMessage:{botMessage:'Czyżbyś był botem?'}})
+            else if (botCheck === false) {
+                this.setState({validationMessage: {botMessage: 'Czyżbyś był botem?'}})
             }
         }
     }
@@ -78,27 +80,27 @@ class Upload extends Component {
             this.captchaDemo.execute();
         }
     }
+
     onLoadRecaptcha() {
         if (this.captchaDemo) {
             this.captchaDemo.reset();
             this.captchaDemo.execute();
         }
     }
+
     verifyCallback(recaptchaToken) {
-        if(recaptchaToken){
-            this.setState({botCheck:true});
-            this.setState({validationMessage:{botMessage:'Wow! Wow! Nie jesteś botem!'}});
+        if (recaptchaToken) {
+            this.setState({botCheck: true});
+            this.setState({validationMessage: {botMessage: 'Wow! Wow! Nie jesteś botem!'}});
         }
-        else{
-            this.setState({botCheck:false});
+        else {
+            this.setState({botCheck: false});
         }
     }
 
     render() {
         const style = {
-            //height: '100vh',
             display: 'flex',
-            //flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
         };
@@ -114,20 +116,15 @@ class Upload extends Component {
                             onChange={(event) => this.setState({title: event.target.value})}
                         />
                         <br/>
-                        {/*<FormControl*/}
-                            {/*type="text"*/}
-                            {/*value={this.state.description}*/}
-                            {/*placeholder="Opis"*/}
-                            {/*onChange={(event) => this.setState({description: event.target.description})}*/}
-                        {/*/>*/}
-                        <br/>
                         <input type="file" onChange={this.handleChange}/>
                         <br/>
                         {
                             this.state.progress === 100 ?
-                                <ProgressBar bsStyle={'succes'}  now={this.state.progress} label={`${this.state.progress}%`}/>
+                                <ProgressBar bsStyle={'succes'} now={this.state.progress}
+                                             label={`${this.state.progress}%`}/>
                                 :
-                                <ProgressBar style={{width:'100%'}} active={true} striped bsStyle={'info'} now={this.state.progress} label={`${this.state.progress}%`} />
+                                <ProgressBar style={{width: '100%'}} active={true} striped bsStyle={'info'}
+                                             now={this.state.progress} label={`${this.state.progress}%`}/>
                         }
                         <ReCaptcha
                             size="visible"
@@ -136,7 +133,7 @@ class Upload extends Component {
                             onloadCallback={this.onLoadRecaptcha}
                             verifyCallback={this.verifyCallback}
                         />
-                        <FormControl.Feedback />
+                        <FormControl.Feedback/>
                         <HelpBlock>
                             <p>{this.state.validationMessage.botMessage}</p>
                             <p>{this.state.validationMessage.imageMessage}</p>
@@ -145,6 +142,9 @@ class Upload extends Component {
                     </FormGroup>
                     <Button onClick={this.handleUpload}>Dodaj!</Button>
                 </form>
+                {
+                    this.state.redirect ? <Redirect to={"/main/1"}/> : null
+                }
             </div>
         )
     }

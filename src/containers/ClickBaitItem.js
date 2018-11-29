@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import ListItem from "../components/ListItem";
+import ListItem from "../components/Item";
 import firebase from "firebase/app";
 import {Panel} from 'react-bootstrap'
-import {Comments, FacebookProvider} from "react-facebook";
+import {Comments} from "react-facebook";
 
 class ClickBaitItem extends Component {
     state = {
@@ -26,7 +26,7 @@ class ClickBaitItem extends Component {
                         <Panel.Title componentClass="h3">{this.state.item.description}</Panel.Title>
                     </Panel.Heading>
                     <Panel.Footer>
-                            <Comments href={`http://localhost:3001/clickbait/${this.props.match.params.id}`}/>
+                        <Comments href={`http://localhost:3001/clickbait/${this.props.match.params.id}`}/>
                     </Panel.Footer>
                 </Panel>
             </div>
