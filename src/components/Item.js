@@ -1,8 +1,8 @@
 import React from 'react'
-import {Panel, ListGroupItem} from 'react-bootstrap'
+import {ListGroupItem, Panel} from 'react-bootstrap'
 import Img from "react-image";
 import {Link} from 'react-router-dom'
-import {FacebookProvider, Like} from 'react-facebook'
+import {Like} from 'react-facebook'
 
 const Item = (props) => {
     return (
@@ -15,10 +15,11 @@ const Item = (props) => {
                     </Link>
                 </Panel.Body>
                 <Panel.Footer>
-                    <FacebookProvider appId="202520040658664">
-                        <Like href={`http://localhost:3001/clickbait/${props.item.id}`} size="large" colorScheme="dark"
-                              share layout="button_count"/>
-                    </FacebookProvider>
+                    <Like href={`https://clickbaitl4.herokuapp.com/clickbait/${props.item.id}`} size="large"
+                          colorScheme="dark"
+                          share layout="button_count"
+                          mobileIframe={true}
+                    />
                 </Panel.Footer>
             </Panel>
         </ListGroupItem>

@@ -4,10 +4,9 @@ import ListItem from "./Item";
 import {ListGroup} from 'react-bootstrap'
 import MyPagination from "./MyPagination";
 import firebase from 'firebase/app'
-import {db} from "../firebase";
 
 class MemeList extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             array: [],
@@ -40,18 +39,18 @@ class MemeList extends React.Component {
     }
 
     render() {
-            return (
-                <ListGroup>
-                    {
-                        map((item) => (
-                            <ListItem item={item}/>
-                        ), this.state.array)
-                    }
+        return (
+            <ListGroup>
+                {
+                    map((item) => (
+                        <ListItem item={item}/>
+                    ), this.state.array)
+                }
 
-                    <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
-                                  count={this.state.clickbait_count}/>
-                </ListGroup>
-            )
+                <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
+                              count={this.state.clickbait_count}/>
+            </ListGroup>
+        )
     }
 }
 

@@ -26,7 +26,7 @@ class ClickBaitItem extends Component {
                         <Panel.Title componentClass="h3">{this.state.item.description}</Panel.Title>
                     </Panel.Heading>
                     <Panel.Footer>
-                        <Comments href={`http://localhost:3001/clickbait/${this.props.match.params.id}`}/>
+                        <Comments href={`https://clickbaitl4.herokuapp.com/clickbait/${this.props.match.params.id}`}/>
                     </Panel.Footer>
                 </Panel>
             </div>
