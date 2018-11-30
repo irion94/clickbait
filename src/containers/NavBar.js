@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import {Nav, NavItem, Navbar} from 'react-bootstrap'
+import {Navbar} from 'react-bootstrap'
+import "../App.css"
 
 class NavBar extends Component {
+    constructor(props){
+        super(props)
+    }
     render() {
         return (
-            <div style={{alignItems:'left'}}>
+            <div>
                 <Navbar>
-                    <Navbar.Header>
+                    <Navbar.Header >
                         <Navbar.Brand>
                             <a href={"/"}>Główna</a>
                         </Navbar.Brand>

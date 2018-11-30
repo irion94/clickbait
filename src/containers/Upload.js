@@ -3,6 +3,7 @@ import {addSection, storage} from '../firebase/index';
 import {loadReCaptcha, ReCaptcha} from 'react-recaptcha-google'
 import {ProgressBar, FormGroup, FormControl, ControlLabel, HelpBlock, Button} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
+import '../App.css';
 
 class Upload extends Component {
     constructor(props) {
@@ -22,18 +23,25 @@ class Upload extends Component {
         this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
 
-        this.handleChange = this
-            .handleChange
+        this.handleFile = this
+            .handleFile
             .bind(this);
         this.handleUpload = this.handleUpload.bind(this);
     }
 
-    handleChange = e => {
+    handleFile = e => {
         if (e.target.files[0]) {
-            const image = e.target.files[0];
-            this.setState(() => ({image}));
+            if(e.target.files[0].size < 10485760){
+                const image = e.target.files[0];
+                this.setState(() => ({image}));
+            }
+            else {
+                this.setState({image:null}, () => {
+                    alert("Plik jest większy niż 10MB")
+                })
+            }
         }
-    }
+    };
 
     handleUpload = () => {
         const {title, botCheck, image} = this.state;
@@ -62,13 +70,19 @@ class Upload extends Component {
         }
         else {
             if (title === '') {
-                this.setState({validationMessage: {titleMessage: 'Wpisz tytuł!?'}})
+                this.setState({validationMessage: {titleMessage: 'Wpisz tytuł!?'}},() => {
+                    alert(this.state.validationMessage.titleMessage)
+                })
             }
             else if (image === null) {
-                this.setState({validationMessage: {imageMessage: 'Nie wybrałeś zdjęcia!'}})
+                this.setState({validationMessage: {imageMessage: 'Nie wybrałeś zdjęcia!'}},() => {
+                    alert(this.state.validationMessage.imageMessage)
+                })
             }
             else if (botCheck === false) {
-                this.setState({validationMessage: {botMessage: 'Czyżbyś był botem?'}})
+                this.setState({validationMessage: {botMessage: 'Czyżbyś był botem?'}}, () => {
+                    alert(this.state.validationMessage.botMessage)
+                })
             }
         }
     }
@@ -99,6 +113,7 @@ class Upload extends Component {
     }
 
     render() {
+        let {botMessage, imageMessage, titleMessage} = this.state.validationMessage;
         const style = {
             display: 'flex',
             alignItems: 'center',
@@ -114,9 +129,10 @@ class Upload extends Component {
                             value={this.state.title}
                             placeholder="Tytuł"
                             onChange={(event) => this.setState({title: event.target.value})}
+                            maxlength={50}
                         />
                         <br/>
-                        <input type="file" onChange={this.handleChange}/>
+                        <input type="file" onChange={this.handleFile} accept="image/*"/>
                         <br/>
                         {
                             this.state.progress === 100 ?
@@ -127,6 +143,7 @@ class Upload extends Component {
                                              now={this.state.progress} label={`${this.state.progress}%`}/>
                         }
                         <ReCaptcha
+                            style={{width: '100%'}}
                             size="visible"
                             render="explicit"
                             sitekey="6LcyiX0UAAAAALTKXFAmXWzlphyCOwpz284RLZis"
@@ -134,7 +151,7 @@ class Upload extends Component {
                             verifyCallback={this.verifyCallback}
                         />
                         <FormControl.Feedback/>
-                        <HelpBlock>
+                        <HelpBlock bsClass={"help-block"}>
                             <p>{this.state.validationMessage.botMessage}</p>
                             <p>{this.state.validationMessage.imageMessage}</p>
                             <p>{this.state.validationMessage.titleMessage}</p>

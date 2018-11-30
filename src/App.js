@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavBar from './containers/NavBar'
-import clickbait2 from "./img/clickbait2.png";
+import header_image from "./img/c_full_logo.png";
 import Img from "react-image";
 import {Modal} from 'react-bootstrap'
 import {FacebookProvider} from 'react-facebook'
@@ -20,23 +20,25 @@ class App extends Component {
                     <div className={"modal-body"}>
                         <FacebookProvider appId={"202520040658664"}>
                             <div className={"modal-content"}>
-                            <header style={{background: 'black', border: 'black', borderRadius: 0}}>
-                                <Img style={{maxWidth: '-webkit-fill-available', maxHeight: 150}} src={clickbait2}/>
-                            </header>
-                            <NavBar/>
-                                <br/>
-                            <Route path="/top" component={Top}/>
-                            <Route path="/upload"  component={Upload}/>
-                            <Route path="/ClickBait/:id" render={(props) => <ClickBaitItem id={props.match.params.id}/>}/>
-                            <Route path="/" exact render={() => <MemeList page = {'1'}/> }/>
-                            <Route path="/:page" exact render={(props) => <MemeList page = {props.match.params.page}/>}/>
-                            <Route path="/privacy-policy" exact render={() => <PrivacyPolicy/>}/>
-                            <Modal.Footer style={{textAlign: 'center'}}>
-                                <Link to={"/privacy-policy"}> Polityka Prywatności</Link>
-                                <br/>
-                                <p>Copyright to Irion94</p>
-                                <p>Created in collaboration with React-Bootstrap</p>
-                            </Modal.Footer>
+                                <header style={{background: 'black', border: 'black', borderRadius: 0}}>
+                                    <Img style={{maxWidth: '-webkit-fill-available', maxHeight: 150}}
+                                         src={header_image}/>
+                                </header>
+                                <NavBar/>
+                                <Route path="/top" component={Top}/>
+                                <Route path="/upload" component={Upload}/>
+                                <Route path="/ClickBait/:id"
+                                       render={(props) => <ClickBaitItem id={props.match.params.id}/>}/>
+                                <Route path="/" exact render={() => <MemeList page={'1'}/>}/>
+                                <Route path="/:page" exact
+                                       render={(props) => <MemeList page={props.match.params.page}/>}/>
+                                <Route path="/privacy-policy" exact render={() => <PrivacyPolicy/>}/>
+                                <Modal.Footer style={{textAlign: 'center'}}>
+                                    <Link to={"/privacy-policy"}> Polityka Prywatności</Link>
+                                    <br/>
+                                    <p>Copyright to Irion94</p>
+                                    <p>Created in collaboration with React-Bootstrap</p>
+                                </Modal.Footer>
                             </div>
                         </FacebookProvider>
                     </div>
