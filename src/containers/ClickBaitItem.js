@@ -10,7 +10,7 @@ class ClickBaitItem extends Component {
     };
 
     componentDidMount() {
-        firebase.database().ref(`/${this.props.match.params.id}`).once('value')
+        firebase.database().ref(`/${this.props.id}`).once('value')
             .then((result) => {
                 this.setState({item: result.val()})
             });
@@ -26,7 +26,7 @@ class ClickBaitItem extends Component {
                         <Panel.Title componentClass="h3">{this.state.item.description}</Panel.Title>
                     </Panel.Heading>
                     <Panel.Footer>
-                        <Comments href={`https://clickbaitl4.herokuapp.com/clickbait/${this.props.match.params.id}`}/>
+                        <Comments href={`https://clickbaitl4.herokuapp.com/clickbait/${this.props.id}`}/>
                     </Panel.Footer>
                 </Panel>
             </div>

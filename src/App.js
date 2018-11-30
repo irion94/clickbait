@@ -27,8 +27,7 @@ class App extends Component {
                                 <br/>
                             <Route path="/top" component={Top}/>
                             <Route path="/upload"  component={Upload}/>
-                            <Route path="/ClickBait/:id" render={(props) => <ClickBaitItem {...props}/>}
-                                   isAuthed={true}/>
+                            <Route path="/ClickBait/:id" render={(props) => <ClickBaitItem id={props.match.params.id}/>}/>
                             <Route path="/" exact render={() => <MemeList page = {'1'}/> }/>
                             <Route path="/:page" exact render={(props) => <MemeList page = {props.match.params.page}/>}/>
                             <Route path="/privacy-policy" exact render={() => <PrivacyPolicy/>}/>
