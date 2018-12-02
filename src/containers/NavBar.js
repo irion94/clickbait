@@ -4,7 +4,6 @@ import "../App.css"
 
 class NavBar extends Component {
     render() {
-        console.log('state',this.state)
         return (
             <div>
                 <Navbar>
