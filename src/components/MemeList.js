@@ -4,6 +4,7 @@ import ListItem from "./Item";
 import {ListGroup} from 'react-bootstrap'
 import MyPagination from "./MyPagination";
 import firebase from 'firebase/app'
+import AdSense from "react-adsense";
 
 class MemeList extends React.Component {
     constructor(props) {
@@ -31,6 +32,8 @@ class MemeList extends React.Component {
                             list.push(item)
                         ), result.val());
 
+
+
                         this.setState({array: list.reverse().slice(this.state.page_number * 5, this.state.page_number * 5 + 5)})
                     });
             })
@@ -41,11 +44,27 @@ class MemeList extends React.Component {
     render() {
         return (
             <ListGroup>
+                <AdSense.Google
+                    client='ca-pub-6713654157370948'
+                    slot='7999692663'
+                    style={{ display: 'block' }}
+                    format='auto'
+                    responsive='true'
+                    test="on"
+                />
                 {
                     map((item) => (
-                        <ListItem item={item}/>
+                        <ListItem key={item.id} item={item}/>
                     ), this.state.array)
                 }
+                <AdSense.Google
+                    client='ca-pub-6713654157370948'
+                    slot='7999692663'
+                    style={{ display: 'block' }}
+                    format='auto'
+                    responsive='true'
+                    test="on"
+                />
 
                 <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
                               count={this.state.clickbait_count}/>

@@ -16,5 +16,6 @@
     <orderEntry type="library" name="firebase-functions" level="application" />
     <orderEntry type="library" name="firebase-messaging" level="application" />
     <orderEntry type="library" name="firebase-firestore" level="application" />
+    <orderEntry type="library" name="adsbygoogle" level="application" />
   </component>
 </module>

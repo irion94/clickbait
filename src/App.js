@@ -5,7 +5,7 @@ import header_image from "./img/c_full_logo.png";
 import Img from "react-image";
 import {Modal} from 'react-bootstrap'
 import {FacebookProvider} from 'react-facebook'
-import {BrowserRouter as Router, Link, Route, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
 import MemeList from "./components/MemeList";
 import Top from "./containers/Top";
 import Upload from "./containers/Upload";
