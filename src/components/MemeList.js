@@ -44,27 +44,27 @@ class MemeList extends React.Component {
     render() {
         return (
             <ListGroup>
-                <AdSense.Google
-                    client='ca-pub-6713654157370948'
-                    slot='7999692663'
-                    style={{ display: 'block' }}
-                    format='auto'
-                    responsive='true'
-                    test="on"
-                />
+                {/*<AdSense.Google*/}
+                    {/*client='ca-pub-6713654157370948'*/}
+                    {/*slot='7999692663'*/}
+                    {/*style={{ display: 'block' }}*/}
+                    {/*format='auto'*/}
+                    {/*responsive='true'*/}
+                    {/*test="on"*/}
+                {/*/>*/}
                 {
                     map((item) => (
                         <ListItem key={item.id} item={item}/>
                     ), this.state.array)
                 }
-                <AdSense.Google
-                    client='ca-pub-6713654157370948'
-                    slot='7999692663'
-                    style={{ display: 'block' }}
-                    format='auto'
-                    responsive='true'
-                    test="on"
-                />
+                {/*<AdSense.Google*/}
+                    {/*client='ca-pub-6713654157370948'*/}
+                    {/*slot='7999692663'*/}
+                    {/*style={{ display: 'block' }}*/}
+                    {/*format='auto'*/}
+                    {/*responsive='true'*/}
+                    {/*test="on"*/}
+                {/*/>*/}
 
                 <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
                               count={this.state.clickbait_count}/>
