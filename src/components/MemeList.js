@@ -4,7 +4,6 @@ import ListItem from "./Item";
 import {ListGroup} from 'react-bootstrap'
 import MyPagination from "./MyPagination";
 import firebase from 'firebase/app'
-import AdSense from "react-adsense";
 
 class MemeList extends React.Component {
     constructor(props) {
