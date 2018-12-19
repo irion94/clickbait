@@ -20,10 +20,12 @@ class App extends Component {
                     <div className={"modal-body"}>
                         <FacebookProvider appId={"202520040658664"}>
                             <div className={"modal-content"}>
-                                <header style={{background: 'black', border: 'black', borderRadius: 0}}>
-                                    <Img style={{maxWidth: '-webkit-fill-available', maxHeight: 150}}
-                                         src={header_image}/>
-                                </header>
+                                <Link to={"/"}>
+                                    <header style={{background: 'black', border: 'black', borderRadius: 0}}>
+                                        <Img style={{maxWidth: '-webkit-fill-available', maxHeight: 150}}
+                                             src={header_image}/>
+                                    </header>
+                                </Link>
                                 <NavBar/>
                                 <Route path="/top" component={Top}/>
                                 <Route path="/upload" component={Upload}/>
