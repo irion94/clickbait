@@ -28,12 +28,14 @@ class MemeList extends React.Component {
                 firebase.database().ref('/').once('value')
                     .then((result) => {
                         this.setState({clickbait_count: result.numChildren()});
-                        map((item) => (
-                            list.push(item)
-                        ), result.val());
-
-
-
+                        if(result.val() !== null){
+                            map((item) => (
+                                list.push(item)
+                            ), result.val());
+                        }
+                        else{
+                            list.push({})
+                        }
                         this.setState({array: list.reverse().slice(this.state.page_number * 5, this.state.page_number * 5 + 5)})
                     });
             })

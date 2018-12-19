@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import * as firebase from "firebase";
 import 'firebase/storage'
 import 'firebase/database'
 
@@ -10,14 +10,29 @@ const config = {
     storageBucket: "clickbaitdb-6b119.appspot.com",
     messagingSenderId: "151810253280"
 };
-firebase.initializeApp(config);
+
+// var config = {
+//     apiKey: "AIzaSyCpxPN98c6fDBSgXmoavH3JfP1eu3FAQaA",
+//     authDomain: "test-af9f9.firebaseapp.com",
+//     databaseURL: "https://test-af9f9.firebaseio.com",
+//     projectId: "test-af9f9",
+//     storageBucket: "test-af9f9.appspot.com",
+//     messagingSenderId: "988735621315"
+// };
+
+let app =firebase.initializeApp(config);
 
 const storage = firebase.storage();
 const database = firebase.database();
 
+
+console.log('set',firebase.database());
+
 export {
     storage, firebase as default
 }
+
+firebase.auth().createUserWithEmailAndPassword('irion123@wp.pl', 'lolo123').then((x)=> console.log(x))
 
 const sectionModel = (id, title, description, picture_path, timestamp) => ({
     id: id,

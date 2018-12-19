@@ -5,10 +5,13 @@ import {Link} from 'react-router-dom'
 import {Like} from 'react-facebook'
 
 const Item = (props) => {
+    let date = new Date(props.item.timestamp).toDateString();
     return (
         <ListGroupItem>
             <Panel>
-                <Panel.Heading componentClass={'h3'}>{props.item.title}</Panel.Heading>
+                <Panel.Heading componentClass={'h3'}>
+                    {props.item.title}
+                    </Panel.Heading>
                 <Panel.Body>
                     <Link to={`/clickbait/${props.item.id}`} props={props.item}>
                         <Img style={{maxWidth: '100%', maxHeight: 'auto'}} src={props.item.picture_path}/>
@@ -20,6 +23,9 @@ const Item = (props) => {
                           share layout="button_count"
                           mobileIframe={true}
                     />
+                    <div style={{textAlign:'right', fontSize: 10}}>
+                        {"Data dodania: " + date}
+                    </div>
                 </Panel.Footer>
             </Panel>
         </ListGroupItem>

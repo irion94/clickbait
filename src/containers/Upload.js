@@ -113,7 +113,6 @@ class Upload extends Component {
     }
 
     render() {
-        let {botMessage, imageMessage, titleMessage} = this.state.validationMessage;
         const style = {
             display: 'flex',
             alignItems: 'center',
