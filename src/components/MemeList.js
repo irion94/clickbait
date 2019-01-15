@@ -4,6 +4,7 @@ import ListItem from "./Item";
 import {ListGroup} from 'react-bootstrap'
 import MyPagination from "./MyPagination";
 import firebase from 'firebase/app'
+import AdSense from 'react-adsense';
 
 class MemeList extends React.Component {
     constructor(props) {
@@ -45,14 +46,14 @@ class MemeList extends React.Component {
     render() {
         return (
             <ListGroup>
-                {/*<AdSense.Google*/}
-                    {/*client='ca-pub-6713654157370948'*/}
-                    {/*slot='7999692663'*/}
-                    {/*style={{ display: 'block' }}*/}
-                    {/*format='auto'*/}
-                    {/*responsive='true'*/}
-                    {/*test="on"*/}
-                {/*/>*/}
+                <AdSense.Google
+                    client='ca-pub-6713654157370948'
+                    slot='7999692663'
+                    style={{ display: 'block' }}
+                    format='auto'
+                    responsive='true'
+                    test="on"
+                />
                 {
                     map((item) => (
                         <ListItem key={item.id} item={item}/>
