@@ -4,6 +4,7 @@ import {loadReCaptcha, ReCaptcha} from 'react-recaptcha-google'
 import {ProgressBar, FormGroup, FormControl, ControlLabel, HelpBlock, Button} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
 import '../App.css';
+import ReactGA from 'react-ga';
 
 class Upload extends Component {
     constructor(props) {
@@ -113,6 +114,7 @@ class Upload extends Component {
     }
 
     render() {
+        ReactGA.pageview(window.location.pathname);
         const style = {
             display: 'flex',
             alignItems: 'center',
