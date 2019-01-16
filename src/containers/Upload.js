@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {addSection, storage} from '../firebase/index';
+import {addSection, initializeReactGA, storage} from '../firebase/index';
 import {loadReCaptcha, ReCaptcha} from 'react-recaptcha-google'
 import {ProgressBar, FormGroup, FormControl, ControlLabel, HelpBlock, Button} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
@@ -24,9 +24,7 @@ class Upload extends Component {
         this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
 
-        this.handleFile = this
-            .handleFile
-            .bind(this);
+        this.handleFile = this.handleFile.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
     }
 
@@ -114,7 +112,7 @@ class Upload extends Component {
     }
 
     render() {
-        ReactGA.pageview(window.location.pathname);
+        initializeReactGA()
         const style = {
             display: 'flex',
             alignItems: 'center',

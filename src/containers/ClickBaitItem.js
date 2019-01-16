@@ -10,7 +10,7 @@ class ClickBaitItem extends Component {
         item: {}
     };
 
-    componentDidMount() {
+    componentWillMount() {
         firebase.database().ref(`/${this.props.id}`).once('value')
             .then((result) => {
                 this.setState({item: result.val()})
@@ -19,7 +19,7 @@ class ClickBaitItem extends Component {
 
 
     render() {
-        ReactGA.pageview(window.location.pathname);
+        console.log('loc:',window.location.pathname)
         return (
             <div>
                 <ListItem item={this.state.item}/>

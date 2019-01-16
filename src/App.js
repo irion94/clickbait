@@ -12,15 +12,12 @@ import Upload from "./containers/Upload";
 import ClickBaitItem from "./containers/ClickBaitItem";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import ReactGA from 'react-ga';
+import {GoogleAnalytics, initializeReactGA} from "./firebase";
 
 
 class App extends Component {
-    initializeReactGA() {
-        ReactGA.initialize('UA-132483674-1');
-        ReactGA.pageview('/homepage');
-    }
     render() {
-        this.initializeReactGA();
+        initializeReactGA()
         return (
             <Router>
                 <div className={"App"}>

@@ -1,6 +1,13 @@
 import * as firebase from "firebase";
 import 'firebase/storage'
 import 'firebase/database'
+import ReactGA from "react-ga";
+
+ReactGA.initialize('UA-132483674-1');
+export const initializeReactGA = () => {
+    ReactGA.pageview(window.location.pathname);
+};
+
 
 const config = {
     apiKey: "AIzaSyBJcpUlTEVxovC_KpWnhZHCY2B3lFWGs4w",
@@ -11,12 +18,9 @@ const config = {
     messagingSenderId: "151810253280"
 };
 
-
 firebase.initializeApp(config);
-
 const storage = firebase.storage();
 const database = firebase.database();
-
 
 export {
     storage, firebase as default
