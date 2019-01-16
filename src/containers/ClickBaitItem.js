@@ -3,7 +3,7 @@ import ListItem from "../components/Item";
 import firebase from "firebase/app";
 import {Panel} from 'react-bootstrap'
 import {Comments} from "react-facebook";
-import ReactGA from "react-ga";
+import {initializeReactGA} from "../firebase";
 
 class ClickBaitItem extends Component {
     state = {
@@ -19,7 +19,7 @@ class ClickBaitItem extends Component {
 
 
     render() {
-        console.log('loc:',window.location.pathname)
+        initializeReactGA();
         return (
             <div>
                 <ListItem item={this.state.item}/>

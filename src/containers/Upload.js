@@ -112,7 +112,7 @@ class Upload extends Component {
     }
 
     render() {
-        initializeReactGA()
+        initializeReactGA();
         const style = {
             display: 'flex',
             alignItems: 'center',
