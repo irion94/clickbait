@@ -3,9 +3,11 @@ import {ListGroupItem, Panel} from 'react-bootstrap'
 import Img from "react-image";
 import {Link} from 'react-router-dom'
 import {Like} from 'react-facebook'
+import {initializeReactGA} from "../firebase";
 
 const Item = (props) => {
     let date = new Date(props.item.timestamp).toDateString();
+    initializeReactGA();
     return (
         <ListGroupItem>
             <Panel>

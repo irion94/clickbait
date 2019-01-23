@@ -128,7 +128,7 @@ class Upload extends Component {
                             value={this.state.title}
                             placeholder="Tytuł"
                             onChange={(event) => this.setState({title: event.target.value})}
-                            maxlength={50}
+                            maxLength={50}
                         />
                         <br/>
                         <input type="file" onChange={this.handleFile} accept="image/*"/>
