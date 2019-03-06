@@ -18,5 +18,7 @@
     <orderEntry type="library" name="firebase-firestore" level="application" />
     <orderEntry type="library" name="adsbygoogle" level="application" />
     <orderEntry type="library" name="adsbygoogle" level="application" />
+    <orderEntry type="library" name="react-bootstrap" level="application" />
+    <orderEntry type="library" name="react.production" level="application" />
   </component>
 </module>

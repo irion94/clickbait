@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import {addSection, initializeReactGA, storage} from '../firebase/index';
 import {loadReCaptcha, ReCaptcha} from 'react-recaptcha-google'
-import {ProgressBar, FormGroup, FormControl, ControlLabel, HelpBlock, Button} from 'react-bootstrap'
+import {ProgressBar, FormGroup, FormControl, FormLabel, Button, Form} from 'react-bootstrap'
 import {Redirect} from 'react-router-dom'
 import '../App.css';
-import ReactGA from 'react-ga';
 
 class Upload extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class Upload extends Component {
             botCheck: false,
             redirect: false,
             validationMessage: {botMessage: '', titleMessage: '', imageMessage: ''}
-        }
+        };
 
         this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
@@ -116,23 +115,26 @@ class Upload extends Component {
         const style = {
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            padding: 100
         };
         return (
             <div style={style}>
                 <form>
-                    <FormGroup>
-                        <ControlLabel>Dodaj nowego ClickBaita!</ControlLabel>
-                        <FormControl
+                        <Form.Group controlId="title">
+                        <Form.Label>Dodaj nowego ClickBaita!</Form.Label>
+                        <Form.Control
                             type="text"
                             value={this.state.title}
                             placeholder="Tytuł"
                             onChange={(event) => this.setState({title: event.target.value})}
                             maxLength={50}
                         />
-                        <br/>
+                        </Form.Group>
+                        <Form.Group controlId="image">
                         <input type="file" onChange={this.handleFile} accept="image/*"/>
-                        <br/>
+                        </Form.Group>
+                        <Form.Group>
                         {
                             this.state.progress === 100 ?
                                 <ProgressBar bsStyle={'succes'} now={this.state.progress}
@@ -141,6 +143,8 @@ class Upload extends Component {
                                 <ProgressBar style={{width: '100%'}} active={true} striped bsStyle={'info'}
                                              now={this.state.progress} label={`${this.state.progress}%`}/>
                         }
+                        </Form.Group>
+                        <Form.Group controlId="capcha">
                         <ReCaptcha
                             style={{width: '100%'}}
                             size="visible"
@@ -149,13 +153,13 @@ class Upload extends Component {
                             onloadCallback={this.onLoadRecaptcha}
                             verifyCallback={this.verifyCallback}
                         />
+                        </Form.Group>
                         <FormControl.Feedback/>
-                        <HelpBlock bsClass={"help-block"}>
-                            <p>{this.state.validationMessage.botMessage}</p>
-                            <p>{this.state.validationMessage.imageMessage}</p>
-                            <p>{this.state.validationMessage.titleMessage}</p>
-                        </HelpBlock>
-                    </FormGroup>
+                        {/*<HelpBlock bsClass={"help-block"}>*/}
+                            {/*<p>{this.state.validationMessage.botMessage}</p>*/}
+                            {/*<p>{this.state.validationMessage.imageMessage}</p>*/}
+                            {/*<p>{this.state.validationMessage.titleMessage}</p>*/}
+                        {/*</HelpBlock>*/}
                     <Button onClick={this.handleUpload}>Dodaj!</Button>
                 </form>
                 {

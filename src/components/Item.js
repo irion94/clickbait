@@ -1,5 +1,5 @@
 import React from 'react'
-import {ListGroupItem, Panel} from 'react-bootstrap'
+import {ListGroupItem, Card} from 'react-bootstrap'
 import Img from "react-image";
 import {Link} from 'react-router-dom'
 import {Like} from 'react-facebook'
@@ -10,16 +10,16 @@ const Item = (props) => {
     initializeReactGA();
     return (
         <ListGroupItem>
-            <Panel>
-                <Panel.Heading componentClass={'h3'}>
+            <Card>
+                <Card.Header componentClass={'h3'}>
                     {props.item.title}
-                    </Panel.Heading>
-                <Panel.Body>
+                    </Card.Header>
+                <Card.Body>
                     <Link to={`/clickbait/${props.item.id}`} props={props.item}>
                         <Img style={{maxWidth: '100%', maxHeight: 'auto'}} src={props.item.picture_path}/>
                     </Link>
-                </Panel.Body>
-                <Panel.Footer>
+                </Card.Body>
+                <Card.Footer>
                     <Like href={`https://clickbaitl4.herokuapp.com/clickbait/${props.item.id}`} size="large"
                           colorScheme="dark"
                           share layout="button_count"
@@ -28,8 +28,8 @@ const Item = (props) => {
                     <div style={{textAlign:'right', fontSize: 10}}>
                         {"Data dodania: " + date}
                     </div>
-                </Panel.Footer>
-            </Panel>
+                </Card.Footer>
+            </Card>
         </ListGroupItem>
     )
 }

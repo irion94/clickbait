@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ListItem from "../components/Item";
 import firebase from "firebase/app";
-import {Panel} from 'react-bootstrap'
+import {Card} from 'react-bootstrap'
 import {Comments} from "react-facebook";
 import {initializeReactGA} from "../firebase";
 
@@ -23,14 +23,12 @@ class ClickBaitItem extends Component {
         return (
             <div>
                 <ListItem item={this.state.item}/>
-                <Panel>
-                    <Panel.Heading>
-                        <Panel.Title componentClass="h3">{this.state.item.description}</Panel.Title>
-                    </Panel.Heading>
-                    <Panel.Footer>
+                <Card>
+                    <Card.Header componentClass="h3">{this.state.item.description}</Card.Header>
+                    <Card.Footer>
                         <Comments href={`https://clickbaitl4.herokuapp.com/clickbait/${this.props.id}`}/>
-                    </Panel.Footer>
-                </Panel>
+                    </Card.Footer>
+                </Card>
             </div>
         );
     }

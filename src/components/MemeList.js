@@ -68,8 +68,11 @@ class MemeList extends React.Component {
                     {/*test="on"*/}
                 {/*/>*/}
 
-                <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
-                              count={this.state.clickbait_count}/>
+                <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <MyPagination number={parseInt(this.props.page)} onClick={() => this.pageHandler}
+                                  count={this.state.clickbait_count}/>
+                </div>
+
             </ListGroup>
         )
     }

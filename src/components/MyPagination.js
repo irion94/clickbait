@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Pagination} from 'react-bootstrap'
+import '../App.css';
 
 class MyPagination extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class MyPagination extends Component {
                     </Pagination.Item>
                 );
             }
-            return <Pagination bsSize="large">{items}</Pagination>
+            return <Pagination size="lg" >{items}</Pagination>
         }
         else{
             return null
