@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple and raw application for watching and uploading memes or content.
+Used technologies: React, Google Firebase, Bootstrap
 
 ## Available Scripts
 
