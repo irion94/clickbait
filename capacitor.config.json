@@ -6,7 +6,7 @@
   "webDir": "build",
   "cordova": {},
   "server": {
-    "url": "http://192.168.0.199:3000",
+    "url": "https://irion94.github.io/clickbait/",
     "hostname": "classmate",
     "iosScheme": "ionic",
     "androidScheme": "http"
