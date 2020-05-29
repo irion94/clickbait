@@ -1,0 +1,7 @@
+{
+  "name": "classmate",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
