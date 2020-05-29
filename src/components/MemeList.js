@@ -10,7 +10,7 @@ class MemeList extends React.Component {
     state = {
         array: [],
         clickbait_count: null,
-        page_number: 0
+        page_number: 1
     };
 
     pageHandler(event) {
