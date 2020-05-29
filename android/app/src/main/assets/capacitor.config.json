@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.classmate",
+  "appName": "classmate",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}
